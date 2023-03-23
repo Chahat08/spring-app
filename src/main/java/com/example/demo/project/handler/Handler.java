@@ -13,8 +13,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -30,8 +28,9 @@ public class Handler {
     private String nextDayTimeStr = "2023-03-24 00:00:00";
     private String lastMinuteStr = "2023-03-23 23:59:00";
     private String dateTimeStr = "2023-03-24 18:00:00";
-    private String schedulePath = "C:\\dev\\ck\\java\\spring-app\\src\\main\\java\\com\\example\\demo\\model\\sample.pdf";
-    private String instructionsPath = "C:\\dev\\ck\\java\\spring-app\\src\\main\\java\\com\\example\\demo\\model\\sample.pdf";
+    String path = "C:\\dev\\ck\\java\\spring-app\\src\\main\\java\\com\\example\\demo\\model\\";
+    private String scheduleFile = "schedule.pdf";
+    private String instructionsFile = "WHALE.pdf";
 
     @Autowired
     public Handler(Validator validator) throws ParseException {
@@ -41,10 +40,10 @@ public class Handler {
         dateTime = new SimpleDateFormat(dateTimeFormat).parse(dateTimeStr);
     }
 
-    private ResponseEntity<InputStreamResource> getPdfToServe(String filePath) throws FileNotFoundException {
-        File file = new File(filePath);
+    private ResponseEntity<InputStreamResource> getPdfToServe(String fileName) throws FileNotFoundException {
+        File file = new File(path+fileName);
         HttpHeaders headers = new HttpHeaders();
-        headers.add(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=sample.pdf");
+        headers.add(HttpHeaders.CONTENT_DISPOSITION, "inline; filename=%s".formatted(fileName));
 
         InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
         return ResponseEntity.ok()
@@ -54,11 +53,11 @@ public class Handler {
                 .body(resource);
     }
     public ResponseEntity<InputStreamResource> getInstructionsFile() throws FileNotFoundException {
-        return getPdfToServe(instructionsPath);
+        return getPdfToServe(instructionsFile);
     }
 
     public ResponseEntity<InputStreamResource> getScheduleFile() throws FileNotFoundException {
-        return getPdfToServe(schedulePath);
+        return getPdfToServe(scheduleFile);
     }
 
     public String getTime() throws ParseException {
