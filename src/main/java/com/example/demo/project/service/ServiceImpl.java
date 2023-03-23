@@ -1,6 +1,6 @@
-package com.example.demo.service;
+package com.example.demo.project.service;
 
-import com.example.demo.handler.Handler;
+import com.example.demo.project.handler.Handler;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;
@@ -9,7 +9,7 @@ import java.io.FileNotFoundException;
 import java.text.ParseException;
 
 @org.springframework.stereotype.Service
-public class ServiceImpl implements com.example.demo.service.Service {
+public class ServiceImpl implements Service{
     Handler handler;
 
     @Autowired

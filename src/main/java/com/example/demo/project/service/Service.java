@@ -1,4 +1,4 @@
-package com.example.demo.service;
+package com.example.demo.project.service;
 
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.ResponseEntity;

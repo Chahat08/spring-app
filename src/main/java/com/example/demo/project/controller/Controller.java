@@ -1,6 +1,6 @@
-package com.example.demo.controller;
+package com.example.demo.project.controller;
 
-import com.example.demo.service.Service;
+import com.example.demo.project.service.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.MediaType;
