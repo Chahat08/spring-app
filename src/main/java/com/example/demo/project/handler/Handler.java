@@ -1,6 +1,6 @@
 package com.example.demo.project.handler;
 
-import com.example.demo.validator.Validator;
+import com.example.demo.project.validator.Validator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.InputStreamResource;
 import org.springframework.http.HttpHeaders;
