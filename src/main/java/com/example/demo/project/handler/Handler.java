@@ -13,6 +13,8 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.ZoneOffset;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
@@ -28,7 +30,7 @@ public class Handler {
     private String nextDayTimeStr = "2023-03-24 00:00:00";
     private String lastMinuteStr = "2023-03-23 23:59:00";
     private String dateTimeStr = "2023-03-24 18:00:00";
-    String path = "C:\\dev\\ck\\java\\spring-app\\src\\main\\java\\com\\example\\demo\\model\\";
+    String path = "C:\\dev\\ck\\java\\spring-app-new\\src\\main\\java\\com\\example\\demo\\project\\model\\";
     private String scheduleFile = "schedule.pdf";
     private String instructionsFile = "WHALE.pdf";
 
@@ -61,8 +63,8 @@ public class Handler {
     }
 
     public String getTime() throws ParseException {
-//        nowTime = Date.from(LocalDateTime.now().toInstant(ZoneOffset.ofHoursMinutes(5, 30)));
-        nowTime = new SimpleDateFormat(dateTimeFormat).parse("2023-03-24 01:59:01");
+        nowTime = Date.from(LocalDateTime.now().toInstant(ZoneOffset.ofHoursMinutes(5, 30)));
+//        nowTime = new SimpleDateFormat(dateTimeFormat).parse("2023-03-24 01:59:01");
 
         Long duration;
         String response = "TIME REMAINING\n %s hours, %s minutes\n for %s!";
